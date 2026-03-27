@@ -3,255 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>专业植物知识库 | 权威带图版</title>
+    <title>种子星球 | 每日惊喜植物</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;}
-        body{background:#f4f8f5;color:#333;line-height:1.9;padding-bottom:140px;}
-        header{background:#236b27;color:#fff;padding:2.2rem;text-align:center;box-shadow:0 3px 12px #ccc;}
-        h1{font-size:2rem;margin-bottom:0.5rem;}
-        .subtitle{opacity:0.9;font-size:1.05rem;}
-        .container{max-width:1200px;margin:0 auto;padding:2.5rem;}
-        .fixed-daily,.random-explore{border-radius:18px;padding:2rem;margin-bottom:2.5rem;box-shadow:0 4px 18px #dde4df;}
-        .fixed-daily{background:#ffffff;border-left:10px solid #236b27;}
-        .random-explore{background:#f8fbf8;border:1px solid #d8e9da;}
-        .zone-title{font-size:1.4rem;color:#236b27;margin-bottom:1.2rem;font-weight:bold;}
-        .btn-green{padding:8px 18px;background:#236b27;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:1rem;}
-        .growth-cycle{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin:1.5rem 0;}
+        body{background:#f8fff8;color:#2d4a2e;line-height:1.8;padding-bottom:120px;}
+        header{background:#4a7c59;color:#fff;padding:2rem;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+        h1{font-size:2.2rem;margin-bottom:0.5rem;}
+        .date-info{font-size:1.1rem;opacity:0.9;}
+        .container{max-width:1200px;margin:0 auto;padding:2rem;}
+        .card{background:#fff;border-radius:20px;padding:2rem;margin-bottom:2rem;box-shadow:0 6px 20px rgba(74,124,89,0.1);}
+        .card-title{display:flex;align-items:center;gap:0.8rem;font-size:1.6rem;color:#3a6b46;font-weight:bold;margin-bottom:1.2rem;}
+        .card-title::before{content:"🌱";font-size:1.8rem;}
+        .seed-basic{margin-bottom:1.5rem;}
+        .seed-basic h3{font-size:1.3rem;color:#2d4a2e;margin-bottom:0.5rem;}
+        .seed-feature{background:#e8f5e9;padding:1rem;border-radius:10px;margin:1rem 0;}
+        .growth-cycle{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1rem;margin:1.5rem 0;}
         .stage{text-align:center;}
-        .stage img{width:100%;height:100px;object-fit:cover;border-radius:8px;box-shadow:0 2px 6px #ddd;}
-        .stage p{margin-top:0.5rem;font-size:0.85rem;color:#555;}
-        .tab-wrap{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 3px 15px #e2e8e3;margin-bottom:3rem;}
-        .tab-nav{display:flex;flex-wrap:wrap;background:#edf4ee;border-bottom:1px solid #ddd;}
-        .tab-item{padding:14px 16px;cursor:pointer;border:none;background:transparent;font-size:0.95rem;color:#444;white-space:nowrap;}
-        .tab-item.active{background:#236b27;color:#fff;}
-        .tab-content{padding:2.5rem;display:none;line-height:2.0;}
-        .tab-content.show{display:block;}
-        .category{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px dashed #eee;}
-        .cat-title{font-size:1.1rem;color:#236b27;margin-bottom:1rem;font-weight:bold;}
-        .reason{color:#236b27;background:#f0f7f1;padding:12px;border-radius:8px;margin:1rem 0;}
-        .ai-float-btn{position:fixed;right:30px;bottom:30px;width:65px;height:65px;border-radius:50%;background:#236b27;color:white;border:none;font-size:26px;cursor:pointer;box-shadow:0 5px 20px #999;z-index:999;}
-        .ai-modal{display:none;position:fixed;right:30px;bottom:105px;width:450px;height:550px;background:white;border-radius:18px;box-shadow:0 6px 35px #666;z-index:998;flex-direction:column;}
-        .ai-head{background:#236b27;color:white;padding:18px;text-align:center;font-weight:bold;position:relative;font-size:1.1rem;}
-        .ai-close{position:absolute;right:18px;top:15px;cursor:pointer;font-size:22px;}
-        .ai-chat{flex:1;padding:20px;overflow-y:auto;background:#f8fbf8;}
-        .msg-user{background:#e3f2fd;padding:10px 14px;border-radius:12px;margin:10px 0;max-width:82%;margin-left:auto;}
-        .msg-ai{background:#e8f5e9;padding:10px 14px;border-radius:12px;margin:10px 0;max-width:82%;}
-        .ai-input{display:flex;padding:15px;border-top:1px solid #eee;}
-        .ai-input input{flex:1;padding:12px;border:1px solid #ddd;border-radius:8px;margin-right:10px;font-size:1rem;}
-        .ai-input button{padding:12px 20px;background:#236b27;color:white;border:none;border-radius:8px;cursor:pointer;}
-        footer{text-align:center;padding:2rem;color:#666;background:#eee;margin-top:5rem;}
+        .stage img{width:100%;height:90px;object-fit:cover;border-radius:10px;border:2px solid #e8f5e9;}
+        .stage p{margin-top:0.5rem;font-size:0.9rem;color:#555;}
+        .btn-group{display:flex;gap:1rem;margin-top:1.5rem;}
+        .btn{padding:0.8rem 1.5rem;border:none;border-radius:10px;font-size:1rem;cursor:pointer;display:flex;align-items:center;gap:0.5rem;}
+        .btn-love{background:#ffebee;color:#c62828;}
+        .btn-love.active{background:#c62828;color:#fff;}
+        .btn-surprise{background:#4a7c59;color:#fff;}
+        .btn-box{background:#fff3e0;color:#ef6c00;}
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;justify-content:center;align-items:center;}
+        .modal-content{background:#fff;border-radius:20px;padding:2rem;width:90%;max-width:800px;max-height:80vh;overflow-y:auto;}
+        .modal-close{position:absolute;top:1rem;right:1rem;font-size:1.5rem;cursor:pointer;}
+        .category-tabs{display:flex;flex-wrap:wrap;gap:0.8rem;margin-bottom:1.5rem;}
+        .category-tab{padding:0.6rem 1.2rem;border-radius:20px;background:#e8f5e9;color:#3a6b46;cursor:pointer;}
+        .category-tab.active{background:#4a7c59;color:#fff;}
+        .category-content{display:none;}
+        .category-content.active{display:block;}
+        .category-content h4{font-size:1.2rem;color:#3a6b46;margin-bottom:0.8rem;}
+        .category-content p{line-height:1.7;color:#555;margin-bottom:1rem;}
+        .fav-list{margin-top:1rem;padding:1rem;background:#f1f8e9;border-radius:10px;}
+        .fav-item{display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid #e8f5e9;}
     </style>
 </head>
 <body>
     <header>
-        <h1>高阶植物专业知识库</h1>
-        <p class="subtitle">权威数据·每日更新·生长周期全图</p>
+        <h1>🌱 种子星球</h1>
+        <div class="date-info" id="todayDate"></div>
     </header>
     <div class="container">
-        <section class="fixed-daily">
-            <div class="zone-title">🌿 今日固定植物</div>
-            <div id="fixedDailyContent"></div>
-            <div id="fixedGrowthCycle" class="growth-cycle"></div>
-        </section>
-        <section class="random-explore">
-            <div class="zone-title">🔍 随机植物探秘</div>
-            <button class="btn-green" id="randomFreshBtn">刷新随机植物</button>
-            <div id="randomExploreContent" style="margin-top:1.5rem;"></div>
-            <div id="randomGrowthCycle" class="growth-cycle"></div>
-        </section>
-        <h2 style="color:#236b27;margin:3rem 0 1.5rem;">📚 十大维度分类</h2>
-        <div class="tab-wrap">
-            <div class="tab-nav">
-                <button class="tab-item active" onclick="switchTab(0)">1.周期长度</button>
-                <button class="tab-item" onclick="switchTab(1)">2.水陆生境</button>
-                <button class="tab-item" onclick="switchTab(2)">3.原生地域</button>
-                <button class="tab-item" onclick="switchTab(3)">4.繁殖侧重</button>
-                <button class="tab-item" onclick="switchTab(4)">5.种子传播</button>
-                <button class="tab-item" onclick="switchTab(5)">6.草本/木本</button>
-                <button class="tab-item" onclick="switchTab(6)">7.农作/野生</button>
-                <button class="tab-item" onclick="switchTab(7)">8.温热带适配</button>
-                <button class="tab-item" onclick="switchTab(8)">9.种子休眠</button>
-                <button class="tab-item" onclick="switchTab(9)">10.经济用途</button>
+        <!-- 第一板块：今日惊喜种子 -->
+        <div class="card">
+            <div class="card-title">今日惊喜种子</div>
+            <div class="seed-basic" id="todaySeed"></div>
+            <div class="growth-cycle" id="todayGrowth"></div>
+            <div class="btn-group">
+                <button class="btn btn-love" id="loveBtn">❤️ 喜欢这颗种子</button>
+                <button class="btn btn-surprise" id="openSurprise">✨ 打开惊喜种子专题</button>
             </div>
-            <div class="tab-content show">
-                <div class="category">
-                    <div class="cat-title">一年生植物</div>
-                    <p>单季完成生命周期，结实后凋亡，靠大量种子延续。</p>
-                    <p class="reason">权威依据：《中国植物志》标准定义</p>
-                </div>
-                <div class="category">
-                    <div class="cat-title">二年生植物</div>
-                    <p>两年周期，第一年储能，第二年春化开花结实。</p>
-                    <p class="reason">权威依据：十字花科标准规律</p>
-                </div>
-                <div class="category">
-                    <div class="cat-title">多年生植物</div>
-                    <p>长期存活，根茎越冬，无性固域+种子拓殖。</p>
-                    <p class="reason">权威依据：湿地森林生态策略</p>
-                </div>
+            <div class="fav-list" id="favList">
+                <strong>❤️ 我喜欢的种子：</strong>
+                <div id="favItems"></div>
             </div>
-            <div class="tab-content">
-                <div class="category"><div class="cat-title">陆生旱生</div><p>根系深、种皮厚、休眠强 | 代表：仙人掌、梭梭</p></div>
-                <div class="category"><div class="cat-title">水生湿生</div><p>通气组织发达，无性繁殖为主 | 代表：芦苇、荷花</p></div>
+        </div>
+
+        <!-- 第二板块：种子盲盒 -->
+        <div class="card">
+            <div class="card-title">种子盲盒</div>
+            <div class="seed-basic" id="boxSeed"></div>
+            <button class="btn btn-box" id="refreshBox">🎁 换一个盲盒种子</button>
+        </div>
+
+        <!-- 第三板块：专业维度分类 -->
+        <div class="card">
+            <div class="card-title">种子植物专业分类</div>
+            <div class="category-tabs">
+                <div class="category-tab active" data-tab="life">生命周期</div>
+                <div class="category-tab" data-tab="habitat">生境类型</div>
+                <div class="category-tab" data-tab="repro">繁殖策略</div>
+                <div class="category-tab" data-tab="disperse">传播方式</div>
+                <div class="category-tab" data-tab="dormancy">休眠特性</div>
             </div>
-            <div class="tab-content">
-                <div class="category"><div class="cat-title">温带原生</div><p>需低温春化 | 代表：苹果、小麦、白菜</p></div>
-                <div class="category"><div class="cat-title">热带原生</div><p>无休眠全年生长 | 代表：椰子、芒果</p></div>
+            <div class="category-content active" id="life">
+                <h4>🌿 生命周期分类</h4>
+                <p><strong>一年生</strong>：从萌发到结实死亡在一年内完成，种子是唯一延续后代的载体，如水稻、向日葵，适合快速占领扰动生境。</p>
+                <p><strong>二年生</strong>：第一年营养生长储能，第二年开花结实，典型代表为十字花科（萝卜、白菜），依赖低温春化启动生殖生长。</p>
+                <p><strong>多年生</strong>：地下器官（根茎/块根）越冬，连年萌发，如芦苇、芍药，兼具无性固域与种子拓殖双重策略。</p>
             </div>
-            <div class="tab-content">
-                <div class="category"><div class="cat-title">偏有性繁殖</div><p>种子为主，基因多样 | 代表：粮食、白菜</p></div>
-                <div class="category"><div class="cat-title">偏无性繁殖</div><p>根茎扩繁，快速占地 | 代表：芦苇、生姜</p></div>
+            <div class="category-content" id="habitat">
+                <h4>🌍 生境类型分类</h4>
+                <p><strong>陆生旱生</strong>：种子种皮厚、胚乳致密，耐旱性极强，如仙人掌、梭梭，依靠深休眠度过极端干旱期。</p>
+                <p><strong>水生湿生</strong>：种子具漂浮结构/通气组织，如莲子、芦苇，适应水媒传播与缺氧湿地环境。</p>
+                <p><strong>中生</strong>：最常见类型，适应湿润土壤，如小麦、苹果，种子休眠中等，萌发对水分敏感。</p>
             </div>
-            <div class="tab-content">
-                <div class="category"><div class="cat-title">风力传播</div><p>轻籽带翅 | 代表：蒲公英、松树</p></div>
-                <div class="category"><div class="cat-title">水力传播</div><p>防水中空 | 代表：莲子、椰子</p></div>
-                <div class="category"><div class="cat-title">动物传播</div><p>钩刺/果肉 | 代表：苍耳、樱桃</p></div>
+            <div class="category-content" id="repro">
+                <h4>🌱 繁殖策略分类</h4>
+                <p><strong>偏有性繁殖</strong>：以种子为核心，基因多样性高，适应环境变化，如粮食作物、多数野花。</p>
+                <p><strong>偏无性繁殖</strong>：以根茎/块茎为主，快速占领生境，种子仅用于长距离扩散，如芦苇、马铃薯。</p>
+                <p><strong>混合策略</strong>：兼顾无性固域与有性拓殖，生态适应性最强，如柳树、草莓。</p>
             </div>
-            <div class="tab-content">
-                <div class="category"><div class="cat-title">草本</div><p>生长快、周期短、结籽多</p></div>
-                <div class="category"><div class="cat-title">木本</div><p>多年储能、种子优质</p></div>
+            <div class="category-content" id="disperse">
+                <h4>🍂 传播方式分类</h4>
+                <p><strong>风力传播</strong>：种子轻、带翅/絮，如蒲公英、松树，可扩散至数百米外。</p>
+                <p><strong>水力传播</strong>：果皮防水、结构中空，如椰子、水葫芦，随水流扩散。</p>
+                <p><strong>动物传播</strong>：具钩刺/肉质果实，如苍耳、樱桃，依附动物体表或被取食后随粪便扩散。</p>
             </div>
-            <div class="tab-content">
-                <div class="category"><div class="cat-title">农作物</div><p>休眠弱、高产整齐</p></div>
-                <div class="category"><div class="cat-title">野生植物</div><p>休眠深、抗逆强</p></div>
-            </div>
-            <div class="tab-content">
-                <div class="category"><div class="cat-title">温带适配</div><p>需低温触发生长</p></div>
-                <div class="category"><div class="cat-title">热带适配</div><p>随时可萌发</p></div>
-            </div>
-            <div class="tab-content">
-                <div class="category"><div class="cat-title">浅休眠</div><p>农作物为主，易发芽</p></div>
-                <div class="category"><div class="cat-title">深休眠</div><p>野生植物为主，待机萌发</p></div>
-            </div>
-            <div class="tab-content">
-                <div class="category"><div class="cat-title">粮食类</div><p>高结实率 | 代表：水稻、玉米</p></div>
-                <div class="category"><div class="cat-title">蔬菜类</div><p>营养器官肥大 | 代表：萝卜、白菜</p></div>
-                <div class="category"><div class="cat-title">果木类</div><p>优质果实 | 代表：苹果、葡萄</p></div>
+            <div class="category-content" id="dormancy">
+                <h4>💤 休眠特性分类</h4>
+                <p><strong>浅休眠</strong>：农作物驯化结果，发芽整齐，如水稻、小麦，适合人工播种。</p>
+                <p><strong>深休眠</strong>：野生植物特征，需低温/光照/化学刺激才能萌发，如松树、薰衣草，保障种群在恶劣环境下存活。</p>
+                <p><strong>无休眠</strong>：热带植物特征，随时可萌发，如香蕉、芒果，依赖稳定气候。</p>
             </div>
         </div>
     </div>
-    <button class="ai-float-btn" onclick="openAi()">🤖</button>
-    <div class="ai-modal" id="aiModal">
-        <div class="ai-head">权威植物问答 <span class="ai-close" onclick="closeAi()">×</span></div>
-        <div class="ai-chat" id="aiChat"><div class="msg-ai">基于《中国植物志》权威回答</div></div>
-        <div class="ai-input">
-            <input type="text" id="aiInput" placeholder="输入问题...">
-            <button onclick="sendMsg()">发送</button>
+
+    <!-- 惊喜种子专题弹窗 -->
+    <div class="modal" id="surpriseModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
         </div>
     </div>
-    <footer>权威植物知识库 · 数据来源：中国植物志</footer>
+
     <script>
-        const plantLib = [
+        // 种子库（自动模式：每日随机切换）
+        const seedLibrary = [
             {
                 name: "水稻（一年生）",
-                cycle: "单季快速完成生长结实",
-                strategy: "高产无休眠，适配农田种植",
-                reason: "《中国植物志》：短季作物适配季风气候",
-                growthImgs: [
-                    { stage: "种子", url: "https://p.qqan.com/up/2021-3/2021032911051288621.jpg" },
-                    { stage: "发芽", url: "https://p.qqan.com/up/2021-3/2021032911051388622.jpg" },
-                    { stage: "幼苗", url: "https://p.qqan.com/up/2021-3/2021032911051388623.jpg" },
-                    { stage: "分蘖", url: "https://p.qqan.com/up/2021-3/2021032911051488624.jpg" },
-                    { stage: "抽穗", url: "https://p.qqan.com/up/2021-3/2021032911051488625.jpg" },
-                    { stage: "成熟", url: "https://p.qqan.com/up/2021-3/2021032911051588626.jpg" }
-                ]
-            },
-            {
-                name: "白萝卜（二年生）",
-                cycle: "第一年储根，第二年春化开花",
-                strategy: "纯种子繁殖，维持基因多样性",
-                reason: "《中国植物志》：十字花科二年生标准规律",
-                growthImgs: [
-                    { stage: "种子", url: "https://p.qqan.com/up/2021-3/2021032911061288631.jpg" },
-                    { stage: "发芽", url: "https://p.qqan.com/up/2021-3/2021032911061288632.jpg" },
-                    { stage: "幼苗", url: "https://p.qqan.com/up/2021-3/2021032911061388633.jpg" },
-                    { stage: "肉质根", url: "https://p.qqan.com/up/2021-3/2021032911061388634.jpg" },
-                    { stage: "开花", url: "https://p.qqan.com/up/2021-3/2021032911061488635.jpg" },
-                    { stage: "结籽", url: "https://p.qqan.com/up/2021-3/2021032911061488636.jpg" }
-                ]
+                feature: "禾本科稻属，种子为颖果，富含淀粉，是全球最重要的粮食作物之一，种子无自然休眠，适配季风气候。",
+                cycle: ["种子","发芽","幼苗","分蘖","抽穗","成熟"],
+                imgs: [
+                    "https://cdn.pixabay.com/photo/2016/03/05/19/02/rice-seed-1238265_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2017/04/11/13/20/rice-seedling-2221260_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2018/05/03/18/30/rice-seedling-3372000_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/rice-1627607_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/rice-flower-1627608_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/rice-field-1627606_960_720.jpg"
+                ],
+                opposite: "芦苇（多年生）",
+                detail: "水稻种子是人类驯化最成功的案例之一，从野生稻到栽培稻，种子休眠性被逐步弱化，以保证播种后快速、整齐萌发。它的颖果结构特殊，外层稃壳保护胚与胚乳，内层胚乳富含淀粉，为幼苗生长提供充足能量。在生态上，水稻种子适应淹水环境，可在缺氧条件下短暂存活，是湿地农业的核心物种。"
             },
             {
                 name: "芦苇（多年生）",
-                cycle: "地下根茎越冬，连年再生",
-                strategy: "无性固土+种子拓殖双策略",
-                reason: "《中国植物志》：湿地优势物种生态机制",
-                growthImgs: [
-                    { stage: "种子", url: "https://p.qqan.com/up/2021-3/2021032911071288641.jpg" },
-                    { stage: "发芽", url: "https://p.qqan.com/up/2021-3/2021032911071288642.jpg" },
-                    { stage: "幼苗", url: "https://p.qqan.com/up/2021-3/2021032911071388643.jpg" },
-                    { stage: "生长期", url: "https://p.qqan.com/up/2021-3/2021032911071388644.jpg" },
-                    { stage: "抽穗", url: "https://p.qqan.com/up/2021-3/2021032911071488645.jpg" },
-                    { stage: "越冬", url: "https://p.qqan.com/up/2021-3/2021032911071488646.jpg" }
-                ]
+                feature: "禾本科芦苇属，种子细小带絮，依靠风力扩散，同时具发达根状茎，可无性繁殖占领湿地生境。",
+                cycle: ["种子","发芽","幼苗","生长期","抽穗","越冬"],
+                imgs: [
+                    "https://cdn.pixabay.com/photo/2016/03/05/19/02/reed-seed-1238266_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2017/04/11/13/20/reed-seedling-2221262_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2018/05/03/18/30/reed-seedling-3372002_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/reed-1627609_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/reed-flower-1627610_960_720.jpg",
+                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/reed-field-1627608_960_720.jpg"
+                ],
+                opposite: "水稻（一年生）",
+                detail: "芦苇种子是典型的风力传播型，细小轻盈，带冠毛绒毛，可随风飘至数公里外。但在自然种群中，芦苇更依赖根状茎无性繁殖，种子仅作为长距离扩散的“备胎”。它的种子休眠期极短，落地后遇水即可萌发，是湿地生态系统中最早占领裸露生境的先锋物种之一。"
             }
         ];
 
-        function renderImg(containerId, plant) {
-            const el = document.getElementById(containerId);
-            el.innerHTML = plant.growthImgs.map(item => `
+        // 初始化日期
+        document.getElementById('todayDate').textContent = new Date().toLocaleDateString('zh-CN', {year:'numeric',month:'long',day:'numeric',weekday:'long'});
+
+        // 自动选择今日种子
+        let todaySeed = seedLibrary[Math.floor(Math.random()*seedLibrary.length)];
+        let boxSeed = seedLibrary.find(s => s.name === todaySeed.opposite);
+
+        // 渲染今日种子
+        function renderTodaySeed(){
+            document.getElementById('todaySeed').innerHTML = `
+                <h3>${todaySeed.name}</h3>
+                <div class="seed-feature">${todaySeed.feature}</div>
+            `;
+            let growthHtml = todaySeed.cycle.map((c,i) => `
                 <div class="stage">
-                    <img src="${item.url}" alt="${item.stage}" loading="lazy">
-                    <p>${item.stage}</p>
+                    <img src="${todaySeed.imgs[i]}" alt="${c}">
+                    <p>${c}</p>
                 </div>
             `).join('');
+            document.getElementById('todayGrowth').innerHTML = growthHtml;
         }
 
-        const today = new Date().toDateString();
-        let fixIdx = Math.floor(Math.random() * plantLib.length);
-        if (localStorage.getItem('fixDate') !== today) {
-            localStorage.setItem('fixDate', today);
-            localStorage.setItem('fixIdx', fixIdx);
-        } else {
-            fixIdx = Number(localStorage.getItem('fixIdx'));
-        }
-        const fixPlant = plantLib[fixIdx];
-        document.getElementById('fixedDailyContent').innerHTML = `
-            <p><strong>${fixPlant.name}</strong></p>
-            <p>生长周期：${fixPlant.cycle}</p>
-            <p>繁衍策略：${fixPlant.strategy}</p>
-            <p class="reason">权威成因：${fixPlant.reason}</p>
-        `;
-        renderImg('fixedGrowthCycle', fixPlant);
-
-        function loadRand() {
-            const p = plantLib[Math.floor(Math.random() * plantLib.length)];
-            document.getElementById('randomExploreContent').innerHTML = `
-                <p><strong>${p.name}</strong></p>
-                <p>周期：${p.cycle}</p>
-                <p>策略：${p.strategy}</p>
-                <p class="reason">权威：${p.reason}</p>
+        // 渲染盲盒种子
+        function renderBoxSeed(){
+            document.getElementById('boxSeed').innerHTML = `
+                <h3>${boxSeed.name}</h3>
+                <div class="seed-feature">${boxSeed.feature}</div>
             `;
-            renderImg('randomGrowthCycle', p);
-        }
-        loadRand();
-        document.getElementById('randomFreshBtn').onclick = loadRand;
-
-        function switchTab(n) {
-            document.querySelectorAll('.tab-content').forEach((e, i) => e.classList.toggle('show', i === n));
-            document.querySelectorAll('.tab-item').forEach((e, i) => e.classList.toggle('active', i === n));
         }
 
-        function openAi() { document.getElementById('aiModal').style.display = 'flex'; }
-        function closeAi() { document.getElementById('aiModal').style.display = 'none'; }
-
-        function getAnswer(q) {
-            q = q.toLowerCase();
-            if (q.includes('水稻')) return "权威答案：水稻是一年生禾本科作物，《中国植物志》定义为短季高产型，无自然休眠，适配人工耕种。";
-            if (q.includes('萝卜') || q.includes('白菜')) return "权威答案：二年生十字花科，第一年储能，第二年低温春化开花，靠种子保持抗病基因。";
-            if (q.includes('芦苇')) return "权威答案：多年生湿地植物，地下根茎无性繁殖巩固领地，种子随风水扩散，是湿地优势物种。";
-            return "请输入具体植物名称，我将给出《中国植物志》权威答案。";
+        // 收藏功能
+        function loadFavs(){
+            let favs = JSON.parse(localStorage.getItem('favs') || '[]');
+            let favHtml = favs.map(f => `
+                <div class="fav-item">
+                    <span>${f.seed}</span>
+                    <span>${f.date}</span>
+                </div>
+            `).join('');
+            document.getElementById('favItems').innerHTML = favHtml || '暂无喜欢的种子';
         }
 
-        function sendMsg() {
-            const input = document.getElementById('aiInput');
-            const text = input.value.trim();
-            if (!text) return;
-            const chat = document.getElementById('aiChat');
-            chat.innerHTML += `<div class="msg-user">${text}</div><div class="msg-ai">${getAnswer(text)}</div>`;
-            chat.scrollTop = chat.scrollHeight;
-            input.value = '';
+        // 绑定事件
+        document.getElementById('loveBtn').addEventListener('click',()=>{
+            let favs = JSON.parse(localStorage.getItem('favs') || '[]');
+            favs.push({seed:todaySeed.name, date:new Date().toLocaleDateString('zh-CN')});
+            localStorage.setItem('favs', JSON.stringify(favs));
+            loadFavs();
+            document.getElementById('loveBtn').classList.add('active');
+            setTimeout(()=>document.getElementById('loveBtn').classList.remove('active'),1000);
+        });
+
+        document.getElementById('openSurprise').addEventListener('click',()=>{
+            document.getElementById('modalContent').innerHTML = `
+                <h2>${todaySeed.name} 专题页</h2>
+                <p>${todaySeed.detail}</p>
+                <div class="growth-cycle">
+                    ${todaySeed.cycle.map((c,i)=>`
+                        <div class="stage">
+                            <img src="${todaySeed.imgs[i]}" alt="${c}">
+                            <p>${c}</p>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            document.getElementById('surpriseModal').style.display = 'flex';
+        });
+
+        function closeModal(){
+            document.getElementById('surpriseModal').style.display = 'none';
         }
-        document.getElementById('aiInput').addEventListener('keydown', e => e.key === 'Enter' && sendMsg());
+
+        document.getElementById('refreshBox').addEventListener('click',()=>{
+            boxSeed = seedLibrary[Math.floor(Math.random()*seedLibrary.length)];
+            renderBoxSeed();
+        });
+
+        // 分类标签切换
+        document.querySelectorAll('.category-tab').forEach(tab=>{
+            tab.addEventListener('click',()=>{
+                document.querySelectorAll('.category-tab').forEach(t=>t.classList.remove('active'));
+                tab.classList.add('active');
+                document.querySelectorAll('.category-content').forEach(c=>c.classList.remove('active'));
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // 初始化
+        renderTodaySeed();
+        renderBoxSeed();
+        loadFavs();
     </script>
 </body>
 </html>
