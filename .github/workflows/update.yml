@@ -7,32 +7,18 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: 拉取仓库代码
+      - name: 拉取代码
         uses: actions/checkout@v4
-      - name: 运行智能采集&生成程序
-        uses: actions/node-setup@v4
-        with:
-          node-version: 20
-      - run: |
-        node -e "
-          const fs = require('fs');
-          // 绑定权威数据源：中国植物志公开接口+合规图库
-          const officialPlantBase = require('https://plantplus.cn/api');
-          const legalImageBase = 'https://cdn.pixabay.com/';
-          
-          // 自动生成标准化植物数据（严格校验准确性）
-          const autoNewPlant = officialPlantBase.getDailyStandardPlant();
-          const fullHtml = fs.readFileSync('index.html','utf8')
-            .replace(OLD_DAILY_PLANT,autoNewPlant.htmlContent)
-            .replace(OLD_IMAGE_SET,autoNewPlant.growthImageList);
-          
-          fs.writeFileSync('index.html',fullHtml);
-        "
-      - name: 自动提交更新
+      - name: 模拟更新（测试用）
+        run: |
+          echo "自动更新测试：$(date)" >> test.log
+      - name: 提交更新
         run: |
           git config --global user.name "AutoBot"
           git config --global user.email "bot@github.com"
           git add .
-          git commit -m "全自动更新：新增权威植物数据+标准生长图"
+          git commit -m "测试自动更新" || echo "无变更"
           git push
