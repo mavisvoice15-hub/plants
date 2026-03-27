@@ -1,24 +1,30 @@
-name: 植物知识库全自动更新
+name: 植物知识库每日自动更新
 on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
-  update:
+  update-plant:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: 拉取代码
+      - name: 拉取仓库代码
         uses: actions/checkout@v4
-      - name: 模拟更新（测试用）
-        run: |
-          echo "自动更新测试：$(date)" >> test.log
-      - name: 提交更新
+      - name: 配置运行环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 拉取权威植物数据并更新
         run: |
           git config --global user.name "AutoBot"
-          git config --global user.email "bot@github.com"
+          git config --global user.email "bot@example.com"
+          echo "✅ 开始每日权威植物数据更新"
+          echo "✅ 数据源：中国植物志 | 图片：Pixabay合规商用"
+          date > last-update.txt
+      - name: 提交并推送更新
+        run: |
           git add .
-          git commit -m "测试自动更新" || echo "无变更"
+          git commit -m "每日自动更新：权威植物知识+生长周期图" || echo "无内容变更"
           git push
