@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>种子星球｜故事+动物+AI深度科普</title>
+    <title>种子星球｜故事+动物+AI科普</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC",sans-serif;}
         body{background:#f8fff8;color:#2d4a2e;line-height:1.8;padding-bottom:130px;}
@@ -19,11 +19,11 @@
         .animal-eat{background:#fff3e0;padding:1rem;border-radius:10px;margin:1rem 0;border-left:4px solid #ff9800;}
         .story-box{background:#fef4ff;padding:1rem;border-radius:10px;margin:1rem 0;border-left:4px solid #9c27b0;}
         .growth-cycle{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1rem;margin:1.5rem 0;}
-        .stage{text-align:center;}
-        .stage img{width:100%;height:90px;object-fit:cover;border-radius:10px;border:2px solid #e8f5e9;}
-        .stage p{margin-top:0.5rem;font-size:0.9rem;color:#555;}
+        .stage{text-align:center;padding:1rem;border:2px solid #e8f5e9;border-radius:10px;background:#f8fff8;}
+        .stage-icon{font-size:2rem;margin-bottom:0.5rem;}
+        .stage p{font-size:0.9rem;color:#555;}
         .btn-group{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;}
-        .btn{padding:0.8rem 1.5rem;border:none;border-radius:10px;font-size:1rem;cursor:pointer;}
+        .btn{padding:0.8rem 1.5rem;border:none;border-radius:10px;font-size:1rem;cursor:pointer;display:flex;align-items:center;gap:0.5rem;}
         .btn-love{background:#ffebee;color:#c62828;}
         .btn-love.active{background:#c62828;color:#fff;}
         .btn-surprise{background:#4a7c59;color:#fff;}
@@ -40,8 +40,6 @@
         .click-ai{color:#6a1b9a;font-weight:bold;cursor:pointer;}
         .fav-list{margin-top:1rem;padding:1rem;background:#f1f8e9;border-radius:10px;}
         .fav-item{display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid #e8f5e9;}
-
-        /* AI常驻面板 */
         .ai-float{position:fixed;right:25px;bottom:25px;width:60px;height:60px;border-radius:50%;background:#4a7c59;color:#fff;border:none;font-size:24px;z-index:999;cursor:pointer;box-shadow:0 4px 15px #999;}
         .ai-panel{display:none;position:fixed;right:25px;bottom:95px;width:420px;height:520px;background:#fff;border-radius:18px;box-shadow:0 6px 30px #666;z-index:998;flex-direction:column;}
         .ai-head{background:#4a7c59;color:#fff;padding:15px;text-align:center;font-weight:bold;}
@@ -59,7 +57,6 @@
         <div class="date-info" id="todayDate"></div>
     </header>
     <div class="container">
-
         <!-- 今日惊喜种子 -->
         <div class="card">
             <div class="card-title">今日惊喜种子</div>
@@ -85,7 +82,7 @@
             <button class="btn btn-box" id="refreshBox">🎁 换一颗盲盒</button>
         </div>
 
-        <!-- 深度分类（含延伸+动物+故事） -->
+        <!-- 深度分类 -->
         <div class="card">
             <div class="card-title">植物深度知识库｜带故事与动物生态</div>
             <div class="category-tabs">
@@ -110,7 +107,7 @@
 
             <div class="category-content" id="food">
                 <h4>🐿️ 爱吃这些植物的小动物</h4>
-                <p>水稻种子：麻雀、鸽子、田鼠最爱吃。</p>
+                <p>水稻种子：麻雀、鸽子、田鼠、野鸡、鲤鱼最爱吃。</p>
                 <p>芦苇嫩芽：野兔、鸭子、水牛喜欢啃。</p>
                 <div class="extend-know">生态链：植物喂动物，动物帮植物传播种子。</div>
             </div>
@@ -146,22 +143,14 @@
     </div>
 
     <script>
-        // 种子库：专业知识 + 动物 + 故事
         const seedDB = [
             {
                 name:"水稻（一年生粮食种子）",
-                desc:"人类最核心主食种子，无休眠、发芽整齐，适合耕种。",
+                desc:"禾本科稻属，种子为颖果，富含淀粉，是全球最重要的粮食作物之一，种子无自然休眠，适配季风气候。",
                 animal:"爱吃它的动物：麻雀、鸽子、田鼠、野鸡、鲤鱼。",
                 story:"远古时代人类发现野草种子好吃，慢慢驯化出水稻，养活了整个亚洲文明。",
                 cycle:["种子","发芽","幼苗","分蘖","抽穗","成熟"],
-                img:[
-                    "https://cdn.pixabay.com/photo/2016/03/05/19/02/rice-seed-1238265_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2017/04/11/13/20/rice-seedling-2221260_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2018/05/03/18/30/rice-seedling-3372000_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/rice-1627607_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/rice-flower-1627608_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/rice-field-1627606_960_720.jpg"
-                ],
+                icons:["🌾","🌱","🍃","🌿","🌸","🍚"],
                 opposite:"芦苇（多年生湿地种子）"
             },
             {
@@ -170,41 +159,29 @@
                 animal:"爱吃它的动物：野鸭、兔子、水牛、蜻蜓、水鸟。",
                 story:"芦苇是湖泊守护者，能净化脏水、稳住泥土，让整片湿地生机勃勃。",
                 cycle:["种子","发芽","幼苗","长茎","抽穗","越冬"],
-                img:[
-                    "https://cdn.pixabay.com/photo/2016/03/05/19/02/reed-seed-1238266_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2017/04/11/13/20/reed-seedling-2221262_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2018/05/03/18/30/reed-seedling-3372002_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/reed-1627609_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/reed-flower-1627610_960_720.jpg",
-                    "https://cdn.pixabay.com/photo/2016/08/29/08/28/reed-field-1627608_960_720.jpg"
-                ],
+                icons:["🍂","🌱","🍃","🌾","💨","❄️"],
                 opposite:"水稻（一年生粮食种子）"
             }
         ];
 
-        // 日期显示
         document.getElementById("todayDate").innerText = new Date().toLocaleDateString("zh-CN",{year:"numeric",month:"long",day:"numeric",weekday:"long"});
 
-        // 随机今日种子
         let today = seedDB[Math.floor(Math.random()*seedDB.length)];
         let blind = seedDB.find(x=>x.name === today.opposite);
 
-        // 渲染今日
         function renderToday(){
             document.getElementById("todaySeed").innerHTML = `<h3>${today.name}</h3><div class="seed-feature">${today.desc}</div>`;
             document.getElementById("todayAnimal").innerHTML = `<b>🐿️ 动物爱吃：</b>${today.animal}`;
             document.getElementById("todayStory").innerHTML = `<b>📖 自然小故事：</b>${today.story}`;
-            let g = today.cycle.map((s,i)=>`<div class="stage"><img src="${today.img[i]}"><p>${s}</p></div>`).join("");
+            let g = today.cycle.map((s,i)=>`<div class="stage"><div class="stage-icon">${today.icons[i]}</div><p>${s}</p></div>`).join("");
             document.getElementById("todayGrowth").innerHTML = g;
         }
 
-        // 渲染盲盒
         function renderBlind(){
             document.getElementById("boxSeed").innerHTML = `<h3>${blind.name}</h3><div class="seed-feature">${blind.desc}</div>`;
             document.getElementById("boxAnimal").innerHTML = `<b>🐿️ 动物爱吃：</b>${blind.animal}`;
         }
 
-        // 收藏记录
         function loadFav(){
             let list = JSON.parse(localStorage.getItem("favSeed")||"[]");
             let html = list.map(i=>`<div class="fav-item"><span>${i.n}</span><span>${i.d}</span></div>`).join("");
@@ -217,20 +194,17 @@
             loadFav();
         };
 
-        // 专题弹窗
         document.getElementById("openSurprise").onclick=()=>{
             document.getElementById("modalContent").innerHTML=`<h2>${today.name}完整故事专题</h2><p>${today.story}</p><p>生态动物：${today.animal}</p>`;
             document.getElementById("surpriseModal").style.display="flex";
         };
         function closeModal(){document.getElementById("surpriseModal").style.display="none";}
 
-        // 盲盒刷新
         document.getElementById("refreshBox").onclick=()=>{
             blind = seedDB[Math.floor(Math.random()*seedDB.length)];
             renderBlind();
         };
 
-        // 分类切换
         document.querySelectorAll(".category-tab").forEach(t=>{
             t.onclick=()=>{
                 document.querySelectorAll(".category-tab").forEach(x=>x.classList.remove("active"));
@@ -240,7 +214,6 @@
             };
         });
 
-        // AI问答核心（满血复活）
         function openAI(){document.getElementById("aiPanel").style.display="flex";}
         function closeAI(){document.getElementById("aiPanel").style.display="none";}
         function fastAsk(q){document.getElementById("aiInput").value=q;sendAI();openAI();}
@@ -263,7 +236,6 @@
             document.getElementById("aiInput").value="";
         }
 
-        // 初始化
         renderToday();renderBlind();loadFav();
     </script>
 </body>
