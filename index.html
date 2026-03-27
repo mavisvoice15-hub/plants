@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>专业植物知识库 | 权威自动更新版</title>
+    <title>专业植物知识库 | 权威带图版</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;}
         body{background:#f4f8f5;color:#333;line-height:1.9;padding-bottom:140px;}
@@ -45,11 +45,11 @@
 <body>
     <header>
         <h1>高阶植物专业知识库</h1>
-        <p class="subtitle">权威数据源·每日自动更新·生长周期可视化</p>
+        <p class="subtitle">权威数据·每日更新·生长周期全图</p>
     </header>
     <div class="container">
         <section class="fixed-daily">
-            <div class="zone-title">🌿 今日权威植物 · 每日自动更新</div>
+            <div class="zone-title">🌿 今日固定植物</div>
             <div id="fixedDailyContent"></div>
             <div id="fixedGrowthCycle" class="growth-cycle"></div>
         </section>
@@ -59,7 +59,7 @@
             <div id="randomExploreContent" style="margin-top:1.5rem;"></div>
             <div id="randomGrowthCycle" class="growth-cycle"></div>
         </section>
-        <h2 style="color:#236b27;margin:3rem 0 1.5rem;">📚 十大维度权威分类</h2>
+        <h2 style="color:#236b27;margin:3rem 0 1.5rem;">📚 十大维度分类</h2>
         <div class="tab-wrap">
             <div class="tab-nav">
                 <button class="tab-item active" onclick="switchTab(0)">1.周期长度</button>
@@ -76,110 +76,182 @@
             <div class="tab-content show">
                 <div class="category">
                     <div class="cat-title">一年生植物</div>
-                    <p>单季完成生命周期，结实后全株凋亡，依靠大量种子快速迭代种群。</p>
-                    <p class="reason">权威依据：《中国植物志》生长周期标准定义 | 代表：水稻、玉米、向日葵</p>
+                    <p>单季完成生命周期，结实后凋亡，靠大量种子延续。</p>
+                    <p class="reason">权威依据：《中国植物志》标准定义</p>
                 </div>
                 <div class="category">
                     <div class="cat-title">二年生植物</div>
-                    <p>两年周期，第一年营养储能，第二年低温春化后开花结实，仅靠种子更新。</p>
-                    <p class="reason">权威依据：十字花科标准生长规律 | 代表：萝卜、白菜、蜀葵</p>
+                    <p>两年周期，第一年储能，第二年春化开花结实。</p>
+                    <p class="reason">权威依据：十字花科标准规律</p>
                 </div>
                 <div class="category">
                     <div class="cat-title">多年生植物</div>
-                    <p>长期存活，草本保留地下根茎，木本逐年木质化，无性固域+种子拓殖。</p>
-                    <p class="reason">权威依据：湿地与森林植物生态策略 | 代表：芦苇、松树、芍药</p>
+                    <p>长期存活，根茎越冬，无性固域+种子拓殖。</p>
+                    <p class="reason">权威依据：湿地森林生态策略</p>
                 </div>
             </div>
             <div class="tab-content">
-                <div class="category"><div class="cat-title">陆生旱生</div><p>根系发达、种皮厚、深休眠 | 权威代表：仙人掌、梭梭</p></div>
-                <div class="category"><div class="cat-title">水生湿生</div><p>通气组织发达，以无性繁殖为主 | 权威代表：芦苇、荷花、香蒲</p></div>
+                <div class="category"><div class="cat-title">陆生旱生</div><p>根系深、种皮厚、休眠强 | 代表：仙人掌、梭梭</p></div>
+                <div class="category"><div class="cat-title">水生湿生</div><p>通气组织发达，无性繁殖为主 | 代表：芦苇、荷花</p></div>
             </div>
             <div class="tab-content">
-                <div class="category"><div class="cat-title">温带原生</div><p>需低温休眠/春化 | 权威代表：苹果、小麦、白菜</p></div>
-                <div class="category"><div class="cat-title">热带原生</div><p>无休眠、全年可生长 | 权威代表：椰子、芒果、香蕉</p></div>
+                <div class="category"><div class="cat-title">温带原生</div><p>需低温春化 | 代表：苹果、小麦、白菜</p></div>
+                <div class="category"><div class="cat-title">热带原生</div><p>无休眠全年生长 | 代表：椰子、芒果</p></div>
             </div>
             <div class="tab-content">
-                <div class="category"><div class="cat-title">偏有性繁殖</div><p>种子为主，基因多样性高 | 权威代表：粮食作物、十字花科</p></div>
-                <div class="category"><div class="cat-title">偏无性繁殖</div><p>根茎/块茎扩繁，快速占领生境 | 权威代表：芦苇、生姜、马铃薯</p></div>
+                <div class="category"><div class="cat-title">偏有性繁殖</div><p>种子为主，基因多样 | 代表：粮食、白菜</p></div>
+                <div class="category"><div class="cat-title">偏无性繁殖</div><p>根茎扩繁，快速占地 | 代表：芦苇、生姜</p></div>
             </div>
             <div class="tab-content">
-                <div class="category"><div class="cat-title">风力传播</div><p>种子轻、带翅/絮 | 权威代表：蒲公英、松树、木棉</p></div>
-                <div class="category"><div class="cat-title">水力传播</div><p>果皮防水、结构中空 | 权威代表：莲子、椰子、水葫芦</p></div>
-                <div class="category"><div class="cat-title">动物传播</div><p>钩刺/肉质果实吸引取食 | 权威代表：苍耳、樱桃、鬼针草</p></div>
+                <div class="category"><div class="cat-title">风力传播</div><p>轻籽带翅 | 代表：蒲公英、松树</p></div>
+                <div class="category"><div class="cat-title">水力传播</div><p>防水中空 | 代表：莲子、椰子</p></div>
+                <div class="category"><div class="cat-title">动物传播</div><p>钩刺/果肉 | 代表：苍耳、樱桃</p></div>
             </div>
             <div class="tab-content">
-                <div class="category"><div class="cat-title">草本</div><p>茎干柔软、生长快、周期短、结实量大</p></div>
-                <div class="category"><div class="cat-title">木本</div><p>木质化茎干、多年储能、后代质量更高</p></div>
+                <div class="category"><div class="cat-title">草本</div><p>生长快、周期短、结籽多</p></div>
+                <div class="category"><div class="cat-title">木本</div><p>多年储能、种子优质</p></div>
             </div>
             <div class="tab-content">
-                <div class="category"><div class="cat-title">农作物</div><p>休眠性弱化、发芽整齐、高产驯化</p></div>
-                <div class="category"><div class="cat-title">野生植物</div><p>深休眠、分批萌发、抗逆性强</p></div>
+                <div class="category"><div class="cat-title">农作物</div><p>休眠弱、高产整齐</p></div>
+                <div class="category"><div class="cat-title">野生植物</div><p>休眠深、抗逆强</p></div>
             </div>
             <div class="tab-content">
-                <div class="category"><div class="cat-title">温带适配</div><p>必须低温触发开花与萌发</p></div>
-                <div class="category"><div class="cat-title">热带适配</div><p>无低温需求，随时可生长</p></div>
+                <div class="category"><div class="cat-title">温带适配</div><p>需低温触发生长</p></div>
+                <div class="category"><div class="cat-title">热带适配</div><p>随时可萌发</p></div>
             </div>
             <div class="tab-content">
-                <div class="category"><div class="cat-title">浅休眠</div><p>农作物为主，适宜人工种植</p></div>
-                <div class="category"><div class="cat-title">深休眠</div><p>野生植物为主，保障种群安全</p></div>
+                <div class="category"><div class="cat-title">浅休眠</div><p>农作物为主，易发芽</p></div>
+                <div class="category"><div class="cat-title">深休眠</div><p>野生植物为主，待机萌发</p></div>
             </div>
             <div class="tab-content">
-                <div class="category"><div class="cat-title">粮食类</div><p>驯化方向：高结实率、稳产 | 权威代表：水稻、玉米、小麦</p></div>
-                <div class="category"><div class="cat-title">蔬菜类</div><p>驯化方向：营养器官肥大 | 权威代表：萝卜、白菜、甘蓝</p></div>
-                <div class="category"><div class="cat-title">果木类</div><p>驯化方向：优质果实+嫁接保种 | 权威代表：苹果、葡萄、柑橘</p></div>
+                <div class="category"><div class="cat-title">粮食类</div><p>高结实率 | 代表：水稻、玉米</p></div>
+                <div class="category"><div class="cat-title">蔬菜类</div><p>营养器官肥大 | 代表：萝卜、白菜</p></div>
+                <div class="category"><div class="cat-title">果木类</div><p>优质果实 | 代表：苹果、葡萄</p></div>
             </div>
         </div>
     </div>
     <button class="ai-float-btn" onclick="openAi()">🤖</button>
     <div class="ai-modal" id="aiModal">
         <div class="ai-head">权威植物问答 <span class="ai-close" onclick="closeAi()">×</span></div>
-        <div class="ai-chat" id="aiChat"><div class="msg-ai">基于《中国植物志》权威回答，可问周期、繁衍、成因、分类</div></div>
+        <div class="ai-chat" id="aiChat"><div class="msg-ai">基于《中国植物志》权威回答</div></div>
         <div class="ai-input">
             <input type="text" id="aiInput" placeholder="输入问题...">
             <button onclick="sendMsg()">发送</button>
         </div>
     </div>
-    <footer>权威植物知识库 · 每日自动更新 · 数据来源：中国植物志</footer>
+    <footer>权威植物知识库 · 数据来源：中国植物志</footer>
     <script>
-        const plantLib=[
-            {name:"水稻（一年生）",cycle:"单季快速完成生长结实",strategy:"高产无休眠，人工选育适配农田",reason:"《中国植物志》：短季作物适配季风气候",growthImgs:[
-                {stage:"种子",url:"https://cdn.pixabay.com/photo/2016/03/05/19/02/rice-seed-1238265_960_720.jpg"},
-                {stage:"发芽",url:"https://cdn.pixabay.com/photo/2017/04/11/13/20/rice-seedling-2221260_960_720.jpg"},
-                {stage:"幼苗",url:"https://cdn.pixabay.com/photo/2018/05/03/18/30/rice-seedling-3372000_960_720.jpg"},
-                {stage:"开花",url:"https://cdn.pixabay.com/photo/2016/08/29/08/28/rice-flower-1627608_960_720.jpg"},
-                {stage:"成熟",url:"https://cdn.pixabay.com/photo/2016/08/29/08/28/rice-1627607_960_720.jpg"},
-                {stage:"采收",url:"https://cdn.pixabay.com/photo/2016/08/29/08/28/rice-field-1627606_960_720.jpg"}
-            ]},
-            {name:"白萝卜（二年生）",cycle:"第一年储根，第二年春化开花",strategy:"纯种子繁殖，维持基因多样性",reason:"《中国植物志》：十字花科标准二年生规律",growthImgs:[
-                {stage:"种子",url:"https://cdn.pixabay.com/photo/2014/04/02/10/56/radish-seed-307790_960_720.jpg"},
-                {stage:"发芽",url:"https://cdn.pixabay.com/photo/2017/04/11/13/20/radish-seedling-2221261_960_720.jpg"},
-                {stage:"幼苗",url:"https://cdn.pixabay.com/photo/2018/05/03/18/30/radish-seedling-3372001_960_720.jpg"},
-                {stage:"肉质根",url:"https://cdn.pixabay.com/photo/2016/08/29/08/28/radish-1627608_960_720.jpg"},
-                {stage:"开花",url:"https://cdn.pixabay.com/photo/2016/08/29/08/28/radish-flower-1627609_960_720.jpg"},
-                {stage:"结籽",url:"https://cdn.pixabay.com/photo/2014/04/02/10/56/radish-307789_960_720.jpg"}
-            ]},
-            {name:"芦苇（多年生）",cycle:"地下根茎越冬，连年再生",strategy:"无性固土+种子拓殖双策略",reason:"《中国植物志》：湿地优势物种生态机制",growthImgs:[
-                {stage:"种子",url:"https://cdn.pixabay.com/photo/2016/03/05/19/02/reed-seed-1238266_960_720.jpg"},
-                {stage:"发芽",url:"https://cdn.pixabay.com/photo/2017/04/11/13/20/reed-seedling-2221262_960_720.jpg"},
-                {stage:"幼苗",url:"https://cdn.pixabay.com/photo/2018/05/03/18/30/reed-seedling-3372002_960_720.jpg"},
-                {stage:"生长期",url:"https://cdn.pixabay.com/photo/2016/08/29/08/28/reed-1627609_960_720.jpg"},
-                {stage:"抽穗",url:"https://cdn.pixabay.com/photo/2016/08/29/08/28/reed-flower-1627610_960_720.jpg"},
-                {stage:"越冬",url:"https://cdn.pixabay.com/photo/2016/08/29/08/28/reed-field-1627608_960_720.jpg"}
-            ]}
+        const plantLib = [
+            {
+                name: "水稻（一年生）",
+                cycle: "单季快速完成生长结实",
+                strategy: "高产无休眠，适配农田种植",
+                reason: "《中国植物志》：短季作物适配季风气候",
+                growthImgs: [
+                    { stage: "种子", url: "https://p.qqan.com/up/2021-3/2021032911051288621.jpg" },
+                    { stage: "发芽", url: "https://p.qqan.com/up/2021-3/2021032911051388622.jpg" },
+                    { stage: "幼苗", url: "https://p.qqan.com/up/2021-3/2021032911051388623.jpg" },
+                    { stage: "分蘖", url: "https://p.qqan.com/up/2021-3/2021032911051488624.jpg" },
+                    { stage: "抽穗", url: "https://p.qqan.com/up/2021-3/2021032911051488625.jpg" },
+                    { stage: "成熟", url: "https://p.qqan.com/up/2021-3/2021032911051588626.jpg" }
+                ]
+            },
+            {
+                name: "白萝卜（二年生）",
+                cycle: "第一年储根，第二年春化开花",
+                strategy: "纯种子繁殖，维持基因多样性",
+                reason: "《中国植物志》：十字花科二年生标准规律",
+                growthImgs: [
+                    { stage: "种子", url: "https://p.qqan.com/up/2021-3/2021032911061288631.jpg" },
+                    { stage: "发芽", url: "https://p.qqan.com/up/2021-3/2021032911061288632.jpg" },
+                    { stage: "幼苗", url: "https://p.qqan.com/up/2021-3/2021032911061388633.jpg" },
+                    { stage: "肉质根", url: "https://p.qqan.com/up/2021-3/2021032911061388634.jpg" },
+                    { stage: "开花", url: "https://p.qqan.com/up/2021-3/2021032911061488635.jpg" },
+                    { stage: "结籽", url: "https://p.qqan.com/up/2021-3/2021032911061488636.jpg" }
+                ]
+            },
+            {
+                name: "芦苇（多年生）",
+                cycle: "地下根茎越冬，连年再生",
+                strategy: "无性固土+种子拓殖双策略",
+                reason: "《中国植物志》：湿地优势物种生态机制",
+                growthImgs: [
+                    { stage: "种子", url: "https://p.qqan.com/up/2021-3/2021032911071288641.jpg" },
+                    { stage: "发芽", url: "https://p.qqan.com/up/2021-3/2021032911071288642.jpg" },
+                    { stage: "幼苗", url: "https://p.qqan.com/up/2021-3/2021032911071388643.jpg" },
+                    { stage: "生长期", url: "https://p.qqan.com/up/2021-3/2021032911071388644.jpg" },
+                    { stage: "抽穗", url: "https://p.qqan.com/up/2021-3/2021032911071488645.jpg" },
+                    { stage: "越冬", url: "https://p.qqan.com/up/2021-3/2021032911071488646.jpg" }
+                ]
+            }
         ];
-        function renderImg(containerId,plant){const el=document.getElementById(containerId);el.innerHTML=plant.growthImgs.map(i=>`<div class="stage"><img src="${i.url}" loading="lazy"><p>${i.stage}</p></div>`).join('');}
-        const today=new Date().toDateString();let fixIdx=Math.floor(Math.random()*plantLib.length);
-        if(localStorage.getItem('fixDate')!==today){localStorage.setItem('fixDate',today);localStorage.setItem('fixIdx',fixIdx);}else{fixIdx=Number(localStorage.getItem('fixIdx'));}
-        const fixPlant=plantLib[fixIdx];
-        document.getElementById('fixedDailyContent').innerHTML=`<p><strong>${fixPlant.name}</strong></p><p>生长周期：${fixPlant.cycle}</p><p>繁衍策略：${fixPlant.strategy}</p><p class="reason">权威成因：${fixPlant.reason}</p>`;
-        renderImg('fixedGrowthCycle',fixPlant);
-        function loadRand(){let p=plantLib[Math.floor(Math.random()*plantLib.length)];document.getElementById('randomExploreContent').innerHTML=`<p><strong>${p.name}</strong></p><p>周期：${p.cycle}</p><p>策略：${p.strategy}</p><p class="reason">权威：${p.reason}</p>`;renderImg('randomGrowthCycle',p);}
-        loadRand();document.getElementById('randomFreshBtn').onclick=loadRand;
-        function switchTab(n){document.querySelectorAll('.tab-content').forEach((e,i)=>e.classList.toggle('show',i===n));document.querySelectorAll('.tab-item').forEach((e,i)=>e.classList.toggle('active',i===n));}
-        function openAi(){document.getElementById('aiModal').style.display='flex';}function closeAi(){document.getElementById('aiModal').style.display='none';}
-        function ans(q){q=q.toLowerCase();if(q.includes('水稻'))return"权威答案：水稻是一年生禾本科作物，《中国植物志》定义为短季高产型，无自然休眠，适配人工耕种。";if(q.includes('萝卜')||q.includes('白菜'))return"权威答案：二年生十字花科，第一年储能，第二年低温春化开花，靠种子保持抗病基因。";if(q.includes('芦苇'))return"权威答案：多年生湿地植物，地下根茎无性繁殖巩固领地，种子随风水扩散，是湿地优势物种。";return"请输入具体植物名称，我将给出《中国植物志》权威答案。";}
-        function send(){let i=document.getElementById('aiInput');let t=i.value.trim();if(!t)return;document.getElementById('aiChat').innerHTML+=`<div class="msg-user">${t}</div><div class="msg-ai">${ans(t)}</div>`;document.getElementById('aiChat').scrollTop=9999;i.value='';}
-        document.getElementById('aiInput').onkeydown=e=>e.key==='Enter'&&send();
+
+        function renderImg(containerId, plant) {
+            const el = document.getElementById(containerId);
+            el.innerHTML = plant.growthImgs.map(item => `
+                <div class="stage">
+                    <img src="${item.url}" alt="${item.stage}" loading="lazy">
+                    <p>${item.stage}</p>
+                </div>
+            `).join('');
+        }
+
+        const today = new Date().toDateString();
+        let fixIdx = Math.floor(Math.random() * plantLib.length);
+        if (localStorage.getItem('fixDate') !== today) {
+            localStorage.setItem('fixDate', today);
+            localStorage.setItem('fixIdx', fixIdx);
+        } else {
+            fixIdx = Number(localStorage.getItem('fixIdx'));
+        }
+        const fixPlant = plantLib[fixIdx];
+        document.getElementById('fixedDailyContent').innerHTML = `
+            <p><strong>${fixPlant.name}</strong></p>
+            <p>生长周期：${fixPlant.cycle}</p>
+            <p>繁衍策略：${fixPlant.strategy}</p>
+            <p class="reason">权威成因：${fixPlant.reason}</p>
+        `;
+        renderImg('fixedGrowthCycle', fixPlant);
+
+        function loadRand() {
+            const p = plantLib[Math.floor(Math.random() * plantLib.length)];
+            document.getElementById('randomExploreContent').innerHTML = `
+                <p><strong>${p.name}</strong></p>
+                <p>周期：${p.cycle}</p>
+                <p>策略：${p.strategy}</p>
+                <p class="reason">权威：${p.reason}</p>
+            `;
+            renderImg('randomGrowthCycle', p);
+        }
+        loadRand();
+        document.getElementById('randomFreshBtn').onclick = loadRand;
+
+        function switchTab(n) {
+            document.querySelectorAll('.tab-content').forEach((e, i) => e.classList.toggle('show', i === n));
+            document.querySelectorAll('.tab-item').forEach((e, i) => e.classList.toggle('active', i === n));
+        }
+
+        function openAi() { document.getElementById('aiModal').style.display = 'flex'; }
+        function closeAi() { document.getElementById('aiModal').style.display = 'none'; }
+
+        function getAnswer(q) {
+            q = q.toLowerCase();
+            if (q.includes('水稻')) return "权威答案：水稻是一年生禾本科作物，《中国植物志》定义为短季高产型，无自然休眠，适配人工耕种。";
+            if (q.includes('萝卜') || q.includes('白菜')) return "权威答案：二年生十字花科，第一年储能，第二年低温春化开花，靠种子保持抗病基因。";
+            if (q.includes('芦苇')) return "权威答案：多年生湿地植物，地下根茎无性繁殖巩固领地，种子随风水扩散，是湿地优势物种。";
+            return "请输入具体植物名称，我将给出《中国植物志》权威答案。";
+        }
+
+        function sendMsg() {
+            const input = document.getElementById('aiInput');
+            const text = input.value.trim();
+            if (!text) return;
+            const chat = document.getElementById('aiChat');
+            chat.innerHTML += `<div class="msg-user">${text}</div><div class="msg-ai">${getAnswer(text)}</div>`;
+            chat.scrollTop = chat.scrollHeight;
+            input.value = '';
+        }
+        document.getElementById('aiInput').addEventListener('keydown', e => e.key === 'Enter' && sendMsg());
     </script>
 </body>
 </html>
